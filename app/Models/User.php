@@ -24,7 +24,8 @@ class User extends Authenticatable
         'phone',
         'avater',
         'email',
-        'password',
+        'password',        'date_of_birth',
+
     ];
 
 
@@ -32,6 +33,10 @@ class User extends Authenticatable
 public function reservations()
 {
     return $this->hasMany(Reservation::class);
+}
+public function traveler()
+{
+    return $this->hasOne(TravelerDetail::class);
 }
 public function bus()
 {

@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\BusRequest;
+use App\Models\Bus;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class BusController extends Controller
@@ -11,23 +14,14 @@ class BusController extends Controller
      */
     public function index()
     {
-        //
+        return view("dashboard.bus.list",["data"=>Bus::get(),"drivers"=>User::where("user_type","driver")->get()]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+     
+    
+    public function store(BusRequest $request)
     {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
+    
     }
 
     /**
@@ -49,7 +43,7 @@ class BusController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(BusRequest $request, string $id)
     {
         //
     }

@@ -9,7 +9,6 @@ class TravelerDetail extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'date_of_birth',
         'user_id',
         'id_card',
         'passport',

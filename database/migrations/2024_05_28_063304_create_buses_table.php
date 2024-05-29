@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('buses', function (Blueprint $table) {
             $table->id();
             $table->string('bus_number');
+            $table->enum('bus_status',["disabled","enabled"]);
+
             $table->string('bus_license');
             $table->foreignId('driver_id')->nullable()->constrained('users')->cascadeOnDelete()->cascadeOnUpdate();
             $table->text('note');

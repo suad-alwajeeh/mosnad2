@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('date');
             $table->string('day');
             $table->string('time');
+            $table->double('price');
             $table->string('period');
             $table->time('start_at');
             $table->enum('status',["pending","completed","inprogress"]);

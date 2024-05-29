@@ -11,22 +11,24 @@ use Illuminate\Support\Facades\Route;
 
 Route::group([
     'prefix' => 'dashboard',
-//	'middleware' => ['auth']
+    //	'middleware' => ['auth']
 ], function () {
-    route::get('/login', [UserController::class,'login'])->name('login');
-    route::post('/login', [UserController::class,'login_request'])->name('login_request');
+    route::get('/login', [UserController::class, 'login'])->name('login');
+    route::post('/login', [UserController::class, 'login_request'])->name('login_request');
 
     Route::group([
-//'middleware' => ['auth']
+        //'middleware' => ['auth']
     ], function () {
-   route::post('/logout', [UserController::class,'logout'])->name('logout');
-   route::get('/', [DashboardController::class,'index'])->name('dashboard');
-   route::resource('users', UserController::class);
-   route::resource('buses', BusController::class);
-   route::resource('trips', TripController::class);
-   route::resource('services', ServiceController::class);
-   route::resource('cities', CityController::class);
-   route::resource('reservation', ReservationController::class);
-
-});
+        route::post('/logout', [UserController::class, 'logout'])->name('logout');
+        route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+        Route::controller(UserController::class)->group(function () {
+            Route::post('users', [UserController::class, "store"])->name("storeUser");
+            Route::get('users', [UserController::class, "index"])->name("allUsers");
+         });
+        route::resource('buses', BusController::class);
+        route::resource('trips', TripController::class);
+        route::resource('services', ServiceController::class);
+        route::resource('cities', CityController::class);
+        route::resource('reservation', ReservationController::class);
+    });
 });

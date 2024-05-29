@@ -15,7 +15,7 @@ class Trip extends Model
         'period',
         'start_at',
         'status',
-        'trip_official',"bus_id","trip_type_id","from_city_id","to_city_id","note"
+        'trip_official',"bus_id","trip_type_id","from_city_id","to_city_id","note","price"
     ];
 
   

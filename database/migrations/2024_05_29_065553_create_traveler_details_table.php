@@ -14,8 +14,7 @@ return new class extends Migration
         Schema::create('traveler_details', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->nullable()->constrained('users')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->string("date_of_birth")->nullable();
-            $table->string("id_card")->nullable();
+             $table->string("id_card")->nullable();
             $table->string("passport")->nullable();
             $table->timestamps();
         });
